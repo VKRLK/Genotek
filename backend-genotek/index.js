@@ -12,8 +12,8 @@ app.get("/api/namedata/:page", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.json({
     data: nameData.slice(
-      3 * (req.params.page - 1),
-      3 + 3 * (req.params.page - 1)
+      Number(req.query.limit * (req.query.page - 1)),
+      Number(req.query.limit * req.query.page)
     ),
   });
 });
@@ -67,10 +67,5 @@ const nameData = [
     id: 9,
     firstName: "Иван9",
     lastName: "Иванов9",
-  },
-  {
-    id: 5,
-    firstName: "Иван5",
-    lastName: "Иванов5",
   },
 ];

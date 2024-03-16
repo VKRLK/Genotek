@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,9 @@ export class HttpService {
 
   constructor(private http: HttpClient) {}
 
-  getNames(page): Observable<any> {
-    return this.http.get(`${this.API_URL}/api/namedata/${page}`, { headers : { 'Access-Control-Allow-Origin': '*'}});
+  getNames(page, limit): Observable<any> {
+    const params = new HttpParams({ fromObject: { page, limit} });
+    const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*'});
+    return this.http.get(`${this.API_URL}/api/namedata/${page}`, {params , headers});
   }
 }

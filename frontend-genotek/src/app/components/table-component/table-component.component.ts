@@ -11,13 +11,14 @@ export class TableComponentComponent {
   visibleNames = [];
   displayedColumns: string[] = ['id', 'firstName', 'lastName'];
   activePage = 1;
+  nameCount = 3;
 
   changePage(): any {
-    this.requestNames(this.activePage, 3);
+    this.requestNames(this.activePage, this.nameCount);
   }
 
-  requestNames(pageNumber, limit): any {
-    this.http.getNames(pageNumber).subscribe((res) => {
+  requestNames(page, limit): any {
+    this.http.getNames(page, limit).subscribe((res) => {
       this.visibleNames = res.data;
       console.log(this.visibleNames);
     });

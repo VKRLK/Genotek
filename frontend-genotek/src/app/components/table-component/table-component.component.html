@@ -1,44 +1,70 @@
+<div class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
+  <h2 class="text-5xl mb-3 text-black">Genotek</h2>
+  <h2 class="text-2xl mb-3 text-black">test task</h2>
+</div>
 
-    <div class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
-      <h2 class="text-5xl mb-3 text-black">Genotek</h2>
-      <h2 class="text-2xl mb-3 text-black">test task</h2>
-    </div>
+<div class="container py-10 px-10 mx-0 min-w-full flex flex-col justify-center">
+  <table mat-table [dataSource]="visibleNames">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <ng-container
+      [matColumnDef]="column"
+      *ngFor="let column of displayedColumns"
+    >
+      <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+      <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+    </ng-container>
+    <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
+  </table>
+</div>
 
-    <div class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
-<table mat-table [dataSource]="visibleNames" >
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <ng-container
-    [matColumnDef]="column"
-    *ngFor="let column of displayedColumns"
+<div class="grid grid-cols-1 place-items-center">
+  <div><span>nameCount</span></div>
+  <div><input style="text-align: center" [(ngModel)]="nameCount" /></div>
+</div>
+
+<div class="flex flex-row justify-center">
+  <button
+    class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded"
+    (click)="moveTo(1)"
   >
-    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-    <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
-  </ng-container>
-  <tr
-    mat-row
-    *matRowDef="let emprow; columns: displayedColumns"
-  ></tr>
-</table>
+    в начало
+  </button>
+  <button
+    class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded"
+    (click)="prevPage()"
+  >
+    назад
+  </button>
+  <button
+    class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded"
+    (click)="moveTo(1)"
+  >
+    1
+  </button>
+  <button
+    class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded"
+    (click)="moveTo(2)"
+  >
+    2
+  </button>
+  <button
+    class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded"
+    (click)="moveTo(3)"
+  >
+    3
+  </button>
+  <button
+    class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded"
+    (click)="nextPage()"
+  >
+    вперед
+  </button>
+  <button
+    class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded"
+    (click)="moveTo(3)"
+  >
+    в конец
+  </button>
 </div>
 
- <div class="center">
 
-</div>
-
-<div class="container py-10 mx-0 flex flex-row justify-center items-center">
-  <button class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded" (click)="moveTo(1)">в начало</button>
-<button class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded" (click)="prevPage()">назад</button>
-<button class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded" (click)="moveTo(1)">1</button>
-<button class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded" (click)="moveTo(2)">2</button>
-<button class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded" (click)="moveTo(3)">3</button>
-<button class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded" (click)="nextPage()">вперед</button>
-<button class="bg-gray-900 text-white hover:bg-gray-400 font-bold py-2 px-4 mt-3 rounded" (click)="moveTo(3)">в конец</button>
-</div>
-
-
-<ion-footer class="footer">
-  <ion-toolbar color="dark">
-    <ion-row>
-    </ion-row>
-  </ion-toolbar>
-</ion-footer>
